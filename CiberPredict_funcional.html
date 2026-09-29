@@ -1,0 +1,204 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CiberPredict | Ciberseguridad Predictiva</title>
+
+<!-- Favicon personalizado: escudo de ciberseguridad -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2319baff'/%3E%3Cstop offset='100%25' stop-color='%2368e9ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 5 L88 19 V45 C88 70 72 88 50 96 C28 88 12 70 12 45 V19Z' fill='%23061b2b' stroke='url(%23g)' stroke-width='6'/%3E%3Crect x='32' y='44' width='36' height='28' rx='5' fill='%230a3046' stroke='%2368e9ff' stroke-width='4'/%3E%3Cpath d='M39 44V35 C39 20 61 20 61 35V44' fill='none' stroke='%2368e9ff' stroke-width='6'/%3E%3Ccircle cx='50' cy='56' r='4' fill='%2319baff'/%3E%3Cpath d='M50 60V66' stroke='%2319baff' stroke-width='3'/%3E%3C/svg%3E">
+
+<style>
+:root{--bg:#06101c;--panel:#0b1b2b;--panel2:#0e2438;--line:#1a405b;--text:#eaf6ff;--muted:#8da8bc;--blue:#18b9ff;--cyan:#64e8ff;--green:#39d98a;--yellow:#ffd166;--red:#ff5d68;--orange:#ff9f43}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% 0,#12395a 0,#06101c 42%);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}button,input,select{font:inherit}.hidden{display:none!important}
+.app{min-height:100vh}.sidebar{position:fixed;left:0;top:0;bottom:0;width:245px;background:#071522;border-right:1px solid var(--line);padding:18px 13px;z-index:5}
+.brand{display:flex;gap:10px;align-items:center;padding:5px 8px 25px}.shield{width:39px;height:39px;border:1px solid var(--blue);border-radius:12px;display:grid;place-items:center;box-shadow:0 0 22px #18b9ff25}.brand b{font-size:18px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.nav button{display:block;width:100%;border:0;background:transparent;color:#b8cbd9;text-align:left;padding:11px 12px;border-radius:9px;margin:3px 0;cursor:pointer}.nav button:hover,.nav button.active{background:#10324c;color:#fff}
+.userbox{position:absolute;bottom:15px;left:15px;right:15px;padding:11px;border:1px solid var(--line);border-radius:10px;background:#0a1b2a;font-size:12px;color:#cce0ed}.userbox small{color:var(--muted)}
+.main{margin-left:245px;padding:25px 30px 50px;max-width:1600px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.top h1{margin:0;font-size:27px}.top p{margin:5px 0;color:var(--muted)}.status{border:1px solid var(--line);background:#091a2a;padding:9px 12px;border-radius:20px;font-size:12px}.dot{display:inline-block;width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 9px var(--green);margin-right:6px}
+.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:15px}.card{background:linear-gradient(145deg,#0b1c2d,#091726);border:1px solid var(--line);border-radius:14px;padding:17px;box-shadow:0 12px 35px #0004}.s3{grid-column:span 3}.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:span 12}.card h2{font-size:16px;margin:0 0 13px}.label{font-size:12px;color:var(--muted)}.kpi{font-size:29px;font-weight:750;margin:7px 0}.green{color:var(--green)}.yellow{color:var(--yellow)}.red{color:var(--red)}.muted{color:var(--muted)}
+canvas{width:100%;height:230px;display:block}.riskbox{display:flex;align-items:center;gap:20px}.ring{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--yellow) 0 68%,#18354c 68%);position:relative}.ring:after{content:"";position:absolute;inset:10px;background:#0b1b2b;border-radius:50%}.ring div{z-index:2;text-align:center}.ring b{display:block;font-size:21px}.ring span{font-size:9px;color:var(--muted)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.btn{border:0;border-radius:8px;padding:10px 14px;background:linear-gradient(90deg,#079fe8,#19c8ff);color:#02111c;font-weight:750;cursor:pointer}.btn.alt{background:#102b40;color:#d8effc;border:1px solid var(--line)}.btn.danger{background:#451821;color:#ffb1b7;border:1px solid #7a2834}.btn:disabled{opacity:.5;cursor:not-allowed}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{padding:14px;border:1px solid var(--line);border-radius:11px;background:#0a1d2e}.field label{display:block;font-size:12px;margin-bottom:8px}.field select,.field input{width:100%;background:#071827;color:#fff;border:1px solid var(--line);padding:9px;border-radius:7px}.question{margin-bottom:12px}.question b{display:block;font-size:13px;margin-bottom:7px}.question label{display:inline-flex;gap:6px;align-items:center;margin:4px 10px 4px 0;color:#bdd1df;font-size:12px}
+.alert{display:flex;justify-content:space-between;gap:15px;align-items:center;padding:11px 0;border-bottom:1px solid #17354b;font-size:12px}.alert:last-child{border:0}.badge{font-size:10px;font-weight:750;padding:5px 8px;border-radius:7px}.bhigh{background:#4a1720;color:#ff8790}.bmed{background:#4a3813;color:#ffe18a}.blow{background:#103b2a;color:#72e5aa}
+.table{width:100%;border-collapse:collapse;font-size:12px}.table th,.table td{padding:10px;border-bottom:1px solid #18364c;text-align:left}.table th{color:var(--muted)}.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.info{padding:15px;border:1px solid var(--line);border-radius:10px;background:#0b2032}.info .ico{font-size:23px}.info b{display:block;margin:7px 0}.info p{font-size:11px;line-height:1.5;color:var(--muted);margin:0}
+.login{min-height:100vh;display:grid;place-items:center;padding:25px;background:radial-gradient(circle at 50% 0,#12395a,#06101c 60%)}.loginbox{width:min(460px,100%);background:#091a2a;border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 20px 70px #0007}.loginbox h1{margin:0}.loginbox p{color:var(--muted);font-size:13px}.loginbox input,.loginbox select{width:100%;padding:11px;margin:6px 0 12px;background:#071827;color:white;border:1px solid var(--line);border-radius:8px}.notice{padding:10px 12px;border:1px solid #1c4965;background:#0a2234;border-radius:9px;font-size:11px;color:#b9d7e8;margin-bottom:13px}
+.footer{text-align:center;color:#688298;font-size:11px;margin-top:20px}
+@media(max-width:900px){.sidebar{position:static;width:100%;height:auto}.userbox{position:static;margin-top:15px}.main{margin:0;padding:18px}.grid,.formgrid,.info-grid{grid-template-columns:1fr}.s3,.s4,.s5,.s6,.s7,.s8,.s12{grid-column:span 1}.top{align-items:flex-start;gap:12px;flex-direction:column}}
+</style>
+</head>
+<body>
+
+<div id="login" class="login">
+  <div class="loginbox">
+    <div class="brand" style="padding-bottom:15px"><div class="shield">🛡️</div><div><b>CiberPredict</b><small>Ciberseguridad Predictiva</small></div></div>
+    <h1>Iniciar sesión</h1>
+    <p>Prototipo funcional para evaluar y visualizar riesgos de ciberseguridad.</p>
+    <div class="notice">Para esta demostración no se utilizan contraseñas reales. Puedes entrar con un nombre y seleccionar el perfil.</div>
+    <label class="label">Nombre</label>
+    <input id="loginName" placeholder="Ej. Usuario001">
+    <label class="label">Tipo de usuario</label>
+    <select id="loginRole"><option>Estudiante</option><option>Docente</option><option>Usuario particular</option><option>Empresa</option><option>Administrador</option></select>
+    <button class="btn" style="width:100%;margin-top:5px" onclick="login()">Entrar a CiberPredict</button>
+  </div>
+</div>
+
+<div id="app" class="app hidden">
+<aside class="sidebar">
+  <div class="brand"><div class="shield">🛡️</div><div><b>CiberPredict</b><small>Ciberseguridad Predictiva</small></div></div>
+  <nav class="nav">
+    <button data-page="home" class="active">⌂ &nbsp; Inicio</button>
+    <button data-page="assessment">⌕ &nbsp; Analizar mi seguridad</button>
+    <button data-page="result">◉ &nbsp; Mi resultado</button>
+    <button data-page="alerts">⚠ &nbsp; Alertas</button>
+    <button data-page="recommendations">♢ &nbsp; Recomendaciones</button>
+    <button data-page="simulator">◈ &nbsp; Simulador</button>
+    <button data-page="security">▣ &nbsp; Centro de seguridad</button>
+    <button data-page="report">▤ &nbsp; Reporte</button>
+    <button id="adminNav" data-page="admin" class="hidden">⚙ &nbsp; Administración</button>
+  </nav>
+  <div class="userbox">👤 <span id="userName">Usuario001</span><br><small id="userRole">Estudiante · sesión activa</small><br><button class="btn alt" style="padding:6px 9px;margin-top:8px;font-size:10px" onclick="logout()">Cerrar sesión</button></div>
+</aside>
+
+<main class="main">
+  <div class="top"><div><h1 id="pageTitle">Panel de seguridad</h1><p id="pageSubtitle">Monitoreo predictivo y recomendaciones para tu protección digital.</p></div><div class="status"><span class="dot"></span>Sistema activo · <span id="clock"></span></div></div>
+
+  <section id="home" class="page active">
+    <div class="grid">
+      <div class="card s3"><div class="label">Nivel de riesgo</div><div class="kpi" id="riskText">Moderado</div><div class="muted" style="font-size:11px">Actualización automática</div></div>
+      <div class="card s3"><div class="label">Amenazas detectadas</div><div class="kpi" id="threats">14</div><div class="green" style="font-size:11px">Monitoreo activo</div></div>
+      <div class="card s3"><div class="label">Análisis realizados</div><div class="kpi" id="analysisCount">0</div><div class="muted" style="font-size:11px">En este navegador</div></div>
+      <div class="card s3"><div class="label">Puntuación de seguridad</div><div class="kpi" id="score">78%</div><div class="green" style="font-size:11px">Evaluación actual</div></div>
+
+      <div class="card s8"><h2>📈 Actividad y riesgo en tiempo real</h2><canvas id="chart"></canvas></div>
+      <div class="card s4"><h2>🎯 Estado de seguridad</h2><div class="riskbox"><div class="ring" id="ring"><div><b id="ringScore">78%</b><span>seguridad</span></div></div><div><div class="label">Nivel</div><strong id="level">MODERADO</strong><p class="label">Se actualiza cada 2 segundos.</p></div></div><div class="tags" style="margin-top:13px"><span class="badge blow">✓ Antivirus</span><span class="badge bmed">! MFA</span><span class="badge bmed">! Copias</span></div></div>
+
+      <div class="card s7"><h2>🚨 Alertas recientes</h2><div id="homeAlerts"></div></div>
+      <div class="card s5"><h2>👤 Riesgos para <span id="profileLabel">estudiantes</span></h2><div id="profileInfo"></div></div>
+      <div class="card s12"><h2>📚 Centro de seguridad</h2><div class="info-grid">
+        <div class="info"><div class="ico">🎓</div><b>Estudiantes</b><p>Phishing, robo de cuentas, contraseñas débiles y Wi‑Fi público.</p></div>
+        <div class="info"><div class="ico">👨‍🏫</div><b>Docentes</b><p>Correos fraudulentos, archivos compartidos y protección de cuentas institucionales.</p></div>
+        <div class="info"><div class="ico">🏢</div><b>Empresas</b><p>Malware, accesos no autorizados, vulnerabilidades y fuga de información.</p></div>
+      </div></div>
+    </div>
+  </section>
+
+  <section id="assessment" class="page">
+    <div class="card">
+      <h2>🔎 Analiza tu seguridad</h2><p class="muted">Responde estas preguntas. El sistema calculará un indicador orientativo y generará recomendaciones.</p>
+      <form id="assessmentForm">
+        <div class="formgrid">
+        <div class="field"><div class="question"><b>1. ¿Usas contraseñas diferentes para tus cuentas importantes?</b><label><input type="radio" name="q1" value="0" required> Sí</label><label><input type="radio" name="q1" value="1"> Algunas veces</label><label><input type="radio" name="q1" value="2"> No</label></div>
+        <div class="question"><b>2. ¿Tienes activada la autenticación multifactor (MFA)?</b><label><input type="radio" name="q2" value="0" required> Sí</label><label><input type="radio" name="q2" value="1"> En algunas cuentas</label><label><input type="radio" name="q2" value="2"> No</label></div>
+        <div class="question"><b>3. ¿Mantienes actualizado tu sistema?</b><label><input type="radio" name="q3" value="0" required> Sí</label><label><input type="radio" name="q3" value="1"> A veces</label><label><input type="radio" name="q3" value="2"> No</label></div>
+        <div class="question"><b>4. ¿Tienes protección contra malware?</b><label><input type="radio" name="q4" value="0" required> Sí</label><label><input type="radio" name="q4" value="1"> No estoy seguro</label><label><input type="radio" name="q4" value="2"> No</label></div></div>
+        <div class="formgrid">
+        <div class="field"><div class="question"><b>5. ¿Verificas remitentes y enlaces antes de abrirlos?</b><label><input type="radio" name="q5" value="0" required> Siempre</label><label><input type="radio" name="q5" value="1"> A veces</label><label><input type="radio" name="q5" value="2"> Nunca</label></div>
+        <div class="question"><b>6. ¿Realizas copias de seguridad?</b><label><input type="radio" name="q6" value="0" required> Frecuentemente</label><label><input type="radio" name="q6" value="1"> A veces</label><label><input type="radio" name="q6" value="2"> Nunca</label></div>
+        <div class="question"><b>7. ¿Usas redes Wi‑Fi públicas?</b><label><input type="radio" name="q7" value="0" required> Rara vez</label><label><input type="radio" name="q7" value="1"> A veces</label><label><input type="radio" name="q7" value="2"> Frecuentemente</label></div>
+        <div class="question"><b>8. ¿Has recibido mensajes que solicitan datos personales inesperadamente?</b><label><input type="radio" name="q8" value="0" required> No</label><label><input type="radio" name="q8" value="1"> Sí, pero los verifico</label><label><input type="radio" name="q8" value="2"> Sí, y a veces respondo</label></div></div>
+        <button class="btn" type="submit">🔍 Calcular mi nivel de riesgo</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="result" class="page"><div class="grid">
+    <div class="card s5"><h2>📊 Resultado de mi evaluación</h2><div class="riskbox"><div class="ring" id="resultRing"><div><b id="resultScore">78%</b><span>seguridad</span></div></div><div><div class="label">Nivel de riesgo</div><h2 id="resultLevel">MODERADO</h2><p class="muted" id="resultDesc">Realiza una evaluación para obtener tu resultado.</p></div></div></div>
+    <div class="card s7"><h2>🔎 Factores detectados</h2><div id="factors">Aún no hay una evaluación. Ve a “Analizar mi seguridad”.</div></div>
+    <div class="card s12"><h2>🛡️ Recomendaciones generadas</h2><div id="resultRecommendations"></div></div>
+  </div></section>
+
+  <section id="alerts" class="page"><div class="grid"><div class="card s8"><h2>🚨 Alertas</h2><div id="alertsList"></div></div><div class="card s4"><h2>📌 Resumen</h2><div class="kpi" id="alertCount">0</div><div class="muted">alertas activas</div></div></div></section>
+
+  <section id="recommendations" class="page"><div class="card"><h2>🛡️ Recomendaciones personalizadas</h2><div id="recommendationsList"></div></div></section>
+
+  <section id="simulator" class="page"><div class="card"><h2>🧪 Simulador de amenazas</h2><p class="muted">Analiza una situación ficticia y aprende a reconocer señales de riesgo.</p>
+    <div class="field"><div class="question"><b>Has recibido un correo que dice que debes verificar urgentemente tu cuenta mediante un enlace.</b>
+      <label><input type="radio" name="s1" value="1"> Conozco al remitente</label><label><input type="radio" name="s1" value="2"> No conozco al remitente</label></div>
+      <div class="question"><b>¿Solicita información personal o credenciales?</b><label><input type="radio" name="s2" value="0"> No</label><label><input type="radio" name="s2" value="2"> Sí</label></div>
+      <div class="question"><b>¿Presiona para actuar inmediatamente?</b><label><input type="radio" name="s3" value="0"> No</label><label><input type="radio" name="s3" value="2"> Sí</label></div>
+      <button class="btn" onclick="simulate()">Analizar situación</button><div id="simResult" style="margin-top:15px"></div>
+    </div>
+  </div></section>
+
+  <section id="security" class="page"><div class="card"><h2>📚 Centro de seguridad</h2><p class="muted">Consulta información según tu perfil.</p><div class="info-grid">
+    <div class="info"><div class="ico">🎓</div><b>Estudiantes</b><p><strong>Peligros:</strong> phishing, robo de cuentas, contraseñas débiles, enlaces maliciosos y Wi‑Fi público.<br><strong>Prevención:</strong> verifica remitentes, activa MFA y evita reutilizar contraseñas.</p></div>
+    <div class="info"><div class="ico">👨‍🏫</div><b>Docentes</b><p><strong>Peligros:</strong> suplantación, archivos maliciosos, correos fraudulentos y exposición de información institucional.<br><strong>Prevención:</strong> verifica solicitudes y protege documentos compartidos.</p></div>
+    <div class="info"><div class="ico">🏢</div><b>Empresas</b><p><strong>Peligros:</strong> malware, fuga de información, accesos no autorizados y vulnerabilidades.<br><strong>Prevención:</strong> actualizaciones, control de accesos, copias y monitoreo.</p></div>
+    <div class="info"><div class="ico">📱</div><b>Usuarios particulares</b><p><strong>Peligros:</strong> estafas, aplicaciones sospechosas y robo de credenciales.<br><strong>Prevención:</strong> instala aplicaciones desde fuentes confiables y protege tus cuentas.</p></div>
+    <div class="info"><div class="ico">🔑</div><b>Contraseñas y MFA</b><p>Usa credenciales únicas y activa autenticación multifactor cuando esté disponible.</p></div>
+    <div class="info"><div class="ico">🛡️</div><b>Actualizaciones</b><p>Mantén sistemas y aplicaciones actualizados desde fuentes oficiales.</p></div>
+  </div></div></section>
+
+  <section id="report" class="page"><div class="card"><h2>📄 Reporte de seguridad</h2><div id="reportContent"></div><button class="btn" onclick="window.print()">🖨️ Imprimir / guardar PDF</button></div></section>
+
+  <section id="admin" class="page"><div class="grid">
+    <div class="card s3"><div class="label">Usuarios registrados</div><div class="kpi" id="adminUsers">1</div></div>
+    <div class="card s3"><div class="label">Análisis realizados</div><div class="kpi" id="adminAnalyses">0</div></div>
+    <div class="card s3"><div class="label">Alertas</div><div class="kpi" id="adminAlerts">0</div></div>
+    <div class="card s3"><div class="label">Riesgo alto</div><div class="kpi red" id="adminHigh">0</div></div>
+    <div class="card s12"><h2>👥 Usuarios y actividad</h2><table class="table"><thead><tr><th>Usuario</th><th>Perfil</th><th>Último nivel</th><th>Análisis</th></tr></thead><tbody id="adminTable"></tbody></table></div>
+  </div></section>
+
+  <div class="footer">CiberPredict · Prototipo académico · Los datos de riesgo y amenazas son demostrativos y no sustituyen una herramienta profesional de seguridad.</div>
+</main>
+</div>
+
+<script>
+const KEY='ciberpredict_v2';
+let state=JSON.parse(localStorage.getItem(KEY)||'{"users":{},"current":null}');
+let chartValues=[45,48,43,52,49,57,54,62,58,65,61,69,64,72,68,75,71,78,74,80];
+const profileRisks={
+ 'Estudiante':['estudiantes',['Phishing','Robo de cuentas','Wi‑Fi público']],
+ 'Docente':['docentes',['Correo fraudulento','Archivos compartidos','Suplantación']],
+ 'Usuario particular':['usuarios particulares',['Estafas','Apps sospechosas','Robo de credenciales']],
+ 'Empresa':['empresas',['Malware','Fuga de información','Accesos no autorizados']],
+ 'Administrador':['administradores',['Accesos no autorizados','Vulnerabilidades','Fuga de información']]
+};
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function login(){
+ let name=document.getElementById('loginName').value.trim()||'Usuario001',role=document.getElementById('loginRole').value;
+ if(!state.users[name])state.users[name]={name,role,analyses:[],last:null};
+ state.current=name;save();showApp();renderAll();
+}
+function logout(){state.current=null;save();document.getElementById('app').classList.add('hidden');document.getElementById('login').classList.remove('hidden')}
+function showApp(){document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');const u=state.users[state.current];document.getElementById('userName').textContent=u.name;document.getElementById('userRole').textContent=u.role+' · sesión activa';document.getElementById('adminNav').classList.toggle('hidden',u.role!=='Administrador')}
+const titles={home:['Panel de seguridad','Monitoreo predictivo y recomendaciones para tu protección digital.'],assessment:['Analizar mi seguridad','Evalúa tus hábitos y condiciones básicas de protección.'],result:['Mi resultado','Consulta tu evaluación y los factores detectados.'],alerts:['Alertas','Revisa posibles situaciones que requieren atención.'],recommendations:['Recomendaciones','Medidas personalizadas según tu evaluación.'],simulator:['Simulador de amenazas','Aprende a reconocer señales de riesgo.'],security:['Centro de seguridad','Información adaptada a diferentes perfiles.'],report:['Reporte','Resumen de tu evaluación de seguridad.'],admin:['Administración','Supervisión general del prototipo.']};
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));document.getElementById('pageTitle').textContent=titles[id][0];document.getElementById('pageSubtitle').textContent=titles[id][1];renderAll()}
+function current(){return state.users[state.current]}
+function renderAll(){
+ const u=current(); if(!u)return;
+ document.getElementById('analysisCount').textContent=u.analyses.length;
+ let last=u.last;
+ if(last){setRisk(last.score);renderResult(last);renderRecommendations(last);renderReport(last)} else {setRisk(78);document.getElementById('factors').textContent='Aún no hay una evaluación. Ve a “Analizar mi seguridad”.';document.getElementById('resultRecommendations').innerHTML='<p class="muted">Realiza una evaluación para generar recomendaciones.</p>';renderReport(null)}
+ const pr=profileRisks[u.role]||profileRisks['Estudiante'];document.getElementById('profileLabel').textContent=pr[0];document.getElementById('profileInfo').innerHTML=pr[1].map(x=>`<span class="badge bmed" style="display:inline-block;margin:4px">${x}</span>`).join('');
+ renderAlerts();renderAdmin();
+}
+function setRisk(score){
+ let level=score>=80?'BAJO':score>=65?'MODERADO':'ALTO';document.getElementById('score').textContent=score+'%';document.getElementById('ringScore').textContent=score+'%';document.getElementById('resultScore').textContent=score+'%';document.getElementById('level').textContent=level;document.getElementById('resultLevel').textContent=level;document.getElementById('riskLevel')?.textContent;document.getElementById('riskText').textContent=level[0]+level.slice(1).toLowerCase();document.getElementById('ring').style.background=`conic-gradient(${level==='BAJO'?'#39d98a':level==='MODERADO'?'#ffd166':'#ff5d68'} 0 ${score}%,#18354c ${score}% 100%)`;document.getElementById('resultRing').style.background=`conic-gradient(${level==='BAJO'?'#39d98a':level==='MODERADO'?'#ffd166':'#ff5d68'} 0 ${score}%,#18354c ${score}% 100%)`;
+}
+function renderResult(last){
+ const desc=last.level==='BAJO'?'El resultado indica buenas prácticas generales.':last.level==='MODERADO'?'Hay aspectos que conviene mejorar para reducir la exposición a riesgos.':'Se detectan varios factores que requieren atención prioritaria.';
+ document.getElementById('resultDesc').textContent=desc;
+ document.getElementById('factors').innerHTML=last.factors.map(f=>`<div class="alert"><span>${f.name}</span><span class="badge ${f.points>=2?'bhigh':f.points===1?'bmed':'blow'}">${f.points>=2?'ATENCIÓN':f.points===1?'MEJORAR':'ADECUADO'}</span></div>`).join('');
+}
+function renderRecommendations(last){
+ const rec=last.factors.filter(f=>f.points>0).map(f=>`<div class="info" style="margin-bottom:9px"><b>🛡️ ${f.name}</b><p>${recommendation(f.name)}</p></div>`);
+ document.getElementById('recommendationsList').innerHTML=rec.length?rec.join(''):'<p class="green">No se detectaron recomendaciones prioritarias.</p>';
+ document.getElementById('resultRecommendations').innerHTML=rec.length?rec.join(''):'<p class="green">No se detectaron recomendaciones prioritarias.</p>';
+}
+function recommendation(name){return {'Contraseñas':'Utiliza contraseñas únicas y evita reutilizarlas en servicios diferentes.','Autenticación multifactor':'Activa MFA en las cuentas que dispongan de esta función.','Actualizaciones':'Instala las actualizaciones disponibles desde fuentes oficiales.','Protección contra malware':'Mantén activa una solución de protección y evita software de origen desconocido.','Mensajes y enlaces':'Verifica remitentes y destinos antes de proporcionar información o abrir enlaces inesperados.','Copias de seguridad':'Mantén copias de información importante en medios apropiados.','Redes Wi‑Fi':'Evita realizar actividades sensibles en redes públicas no confiables.','Mensajes sospechosos':'No proporciones datos ante solicitudes inesperadas; verifica por un canal oficial.'}[name]||'Revisa las medidas de seguridad relacionadas con este factor.'}
+document.getElementById('assessmentForm').addEventListener('submit',e=>{e.preventDefault();const u=current(),fd=new FormData(e.target);let names=['Contraseñas','Autenticación multifactor','Actualizaciones','Protección contra malware','Mensajes y enlaces','Copias de seguridad','Redes Wi‑Fi','Mensajes sospechosos'];let factors=names.map((n,i)=>({name:n,points:Number(fd.get('q'+(i+1)))}));let total=factors.reduce((a,b)=>a+b.points,0),score=Math.round(100-(total/16)*100),level=score>=80?'BAJO':score>=65?'MODERADO':'ALTO';let result={date:new Date().toLocaleString('es-CO'),score,level,factors};u.analyses.push(result);u.last=result;save();renderAll();go('result')});
+function renderAlerts(){
+ const u=current(),l=u.last;let arr=[];if(l)l.factors.filter(f=>f.points>0).forEach(f=>arr.push({t:f.name,n:f.points>=2?'Alto':'Medio',c:f.points>=2?'bhigh':'bmed'}));if(!arr.length)arr=[{t:'No hay alertas de tu última evaluación',n:'Bajo',c:'blow'}];document.getElementById('alertsList').innerHTML=arr.map(a=>`<div class="alert"><span>${a.t}</span><span class="badge ${a.c}">${a.n}</span></div>`).join('');document.getElementById('homeAlerts').innerHTML=arr.slice(0,4).map(a=>`<div class="alert"><span>${a.t}</span><span class="badge ${a.c}">${a.n}</span></div>`).join('');document.getElementById('alertCount').textContent=arr.filter(a=>a.n!=='Bajo').length}
+function renderReport(last){document.getElementById('reportContent').innerHTML=last?`<div class="grid"><div class="card s4"><div class="label">Usuario</div><div class="kpi" style="font-size:20px">${current().name}</div><div class="muted">${current().role}</div></div><div class="card s4"><div class="label">Fecha</div><div class="kpi" style="font-size:20px">${last.date}</div></div><div class="card s4"><div class="label">Resultado</div><div class="kpi" style="font-size:20px">${last.level} · ${last.score}%</div></div></div><br><h3>Factores evaluados</h3><table class="table"><tr><th>Factor</th><th>Puntuación</th><th>Estado</th></tr>${last.factors.map(f=>`<tr><td>${f.name}</td><td>${f.points}</td><td>${f.points===0?'Adecuado':f.points===1?'Mejorar':'Atención'}</td></tr>`).join('')}</table>`:'<p class="muted">Realiza una evaluación para generar el reporte.</p>'}
+function renderAdmin(){if(current().role!=='Administrador')return;let users=Object.values(state.users);document.getElementById('adminUsers').textContent=users.length;document.getElementById('adminAnalyses').textContent=users.reduce((a,u)=>a+u.analyses.length,0);let alerts=users.reduce((a,u)=>a+(u.last?u.last.factors.filter(f=>f.points>0).length:0),0);document.getElementById('adminAlerts').textContent=alerts;document.getElementById('adminHigh').textContent=users.filter(u=>u.last&&u.last.level==='ALTO').length;document.getElementById('adminTable').innerHTML=users.map(u=>`<tr><td>${u.name}</td><td>${u.role}</td><td>${u.last?u.last.level:'Sin evaluación'}</td><td>${u.analyses.length}</td></tr>`).join('')}
+function simulate(){let vals=['s1','s2','s3'].map(n=>{let x=document.querySelector(`input[name=${n}]:checked`);return x?Number(x.value):0});if(!document.querySelector('input[name=s1]:checked')){document.getElementById('simResult').innerHTML='<span class="red">Selecciona las respuestas para analizar la situación.</span>';return}let p=vals.reduce((a,b)=>a+b,0);document.getElementById('simResult').innerHTML=p>=3?'<div class="badge bhigh" style="display:inline-block">RIESGO ELEVADO</div><p class="muted">Hay varias señales compatibles con phishing. No proporciones credenciales y verifica la solicitud mediante un canal oficial.</p>':'<div class="badge blow" style="display:inline-block">RIESGO BAJO</div><p class="muted">No se observaron suficientes señales en esta simulación. Aun así, verifica siempre mensajes inesperados.</p>'}
+function tick(){document.getElementById('clock').textContent=new Date().toLocaleTimeString('es-CO');chartValues.push(Math.max(30,Math.min(90,chartValues.at(-1)+Math.round((Math.random()-.48)*9))));chartValues.shift();drawChart();document.getElementById('threats').textContent=12+Math.floor(Math.random()*7)}
+function drawChart(){const c=document.getElementById('chart'),x=c.getContext('2d'),w=c.clientWidth,h=230,d=devicePixelRatio||1;c.width=w*d;c.height=h*d;x.setTransform(d,0,0,d,0,0);x.clearRect(0,0,w,h);x.strokeStyle='#16354c';for(let y=20;y<h;y+=42){x.beginPath();x.moveTo(0,y);x.lineTo(w,y);x.stroke()}x.beginPath();chartValues.forEach((v,i)=>{let px=i*w/(chartValues.length-1),py=h-25-v*2;i?x.lineTo(px,py):x.moveTo(px,py)});x.strokeStyle='#18b9ff';x.lineWidth=3;x.stroke();x.lineTo(w,h-25);x.lineTo(0,h-25);x.closePath();x.fillStyle='#18b9ff16';x.fill()}
+function boot(){if(state.current&&state.users[state.current]){showApp();renderAll()}else{document.getElementById('login').classList.remove('hidden')}drawChart();setInterval(tick,2000)}
+boot();
+</script>
+</body>
+</html>

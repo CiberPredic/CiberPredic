@@ -1,0 +1,234 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CiberPredict | Centro de Información de Ciberseguridad</title>
+
+<!-- Favicon personalizado: escudo de ciberseguridad -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2319baff'/%3E%3Cstop offset='100%25' stop-color='%2368e9ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 5 L88 19 V45 C88 70 72 88 50 96 C28 88 12 70 12 45 V19Z' fill='%23061b2b' stroke='url(%23g)' stroke-width='6'/%3E%3Crect x='32' y='44' width='36' height='28' rx='5' fill='%230a3046' stroke='%2368e9ff' stroke-width='4'/%3E%3Cpath d='M39 44V35 C39 20 61 20 61 35V44' fill='none' stroke='%2368e9ff' stroke-width='6'/%3E%3Ccircle cx='50' cy='56' r='4' fill='%2319baff'/%3E%3Cpath d='M50 60V66' stroke='%2319baff' stroke-width='3'/%3E%3C/svg%3E">
+
+<style>
+:root{
+ --bg:#06111d;--bg2:#0a1b2b;--card:#0c2134;--line:#1b435d;
+ --text:#edf8ff;--muted:#9ab0c0;--blue:#19baff;--cyan:#68e9ff;
+ --green:#40d995;--yellow:#ffd166;--red:#ff626d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#06111d,#081a2b 50%,#06111d);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.7}
+a{color:var(--cyan)}
+.nav{position:sticky;top:0;z-index:10;background:#06111de8;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.navin{max-width:1200px;margin:auto;display:flex;align-items:center;gap:22px;padding:13px 20px}
+.logo{font-weight:800;font-size:18px;white-space:nowrap}.logo span{color:var(--blue)}
+.nav a{text-decoration:none;color:#c4d7e4;font-size:13px}.nav a:hover{color:white}
+.hero{max-width:1200px;margin:auto;padding:70px 20px 45px;display:grid;grid-template-columns:1.15fr .85fr;gap:45px;align-items:center}
+.badge{display:inline-block;padding:6px 10px;border:1px solid #1d5271;border-radius:999px;color:var(--cyan);background:#0a2639;font-size:11px;font-weight:700}
+h1{font-size:48px;line-height:1.08;margin:17px 0}.hero p{font-size:17px;color:var(--muted);max-width:700px}
+.btn{display:inline-block;margin-top:14px;padding:12px 17px;border-radius:9px;text-decoration:none;font-weight:800;background:linear-gradient(90deg,#08a9ee,#24cfff);color:#03111c;border:0}.btn.secondary{background:#102d43;color:#dff5ff;border:1px solid var(--line);margin-left:8px}
+.hero-art{background:radial-gradient(circle at 50% 45%,#0f5270,#071928 58%);border:1px solid var(--line);border-radius:20px;padding:15px;box-shadow:0 20px 70px #0007}
+.hero-art svg{display:block;width:100%;height:auto}
+.container{max-width:1200px;margin:auto;padding:10px 20px 70px}
+section{scroll-margin-top:80px;margin-top:42px}
+h2{font-size:28px;margin:0 0 8px}h3{font-size:19px;margin:22px 0 7px}.lead{color:var(--muted);max-width:850px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:20px}
+.card{background:linear-gradient(145deg,#0c2134,#091a29);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card p,.card li{color:#b5c8d5;font-size:14px}.icon{font-size:28px}
+.warning{border-left:4px solid var(--yellow);background:#1b1b12;padding:14px 18px;border-radius:9px;color:#d9d2b5;margin:18px 0}
+.redbox{border-left:4px solid var(--red);background:#251217;padding:14px 18px;border-radius:9px;color:#e5b7bc;margin:18px 0}
+.greenbox{border-left:4px solid var(--green);background:#0c211a;padding:14px 18px;border-radius:9px;color:#b7dfcd;margin:18px 0
+}
+.image{margin:24px 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#081a2a}.image svg{display:block;width:100%}.caption{padding:9px 14px;color:var(--muted);font-size:11px}
+.table{width:100%;border-collapse:collapse;margin-top:18px;background:#091a2a;border:1px solid var(--line);border-radius:10px;overflow:hidden}.table th,.table td{padding:12px;border-bottom:1px solid #18374d;text-align:left;font-size:13px}.table th{color:var(--cyan);background:#0b2235}.table td{color:#b9ccd8}
+.timeline{border-left:2px solid #1c536f;padding-left:22px}.step{margin:0 0 24px}.step b{color:white}.step span{display:block;color:var(--muted);font-size:13px}
+footer{border-top:1px solid var(--line);padding:30px 20px;color:#728a9d;text-align:center;font-size:12px}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:45px}h1{font-size:38px}.grid{grid-template-columns:1fr}.navin{overflow:auto}.nav a{white-space:nowrap}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+ <div class="navin">
+  <div class="logo">🛡️ <span>CiberPredict</span></div>
+  <a href="#que-es">¿Qué es?</a>
+  <a href="#amenazas">Amenazas</a>
+  <a href="#usuarios">Usuarios</a>
+  <a href="#prevencion">Prevención</a>
+  <a href="#ia">Predicción</a>
+  <a href="#recursos">Recursos</a>
+  <a href="CiberPredict_funcional.html">Plataforma</a>
+ </div>
+</nav>
+
+<header class="hero">
+ <div>
+  <span class="badge">CENTRO DE INFORMACIÓN · CIBERSEGURIDAD</span>
+  <h1>Ciberseguridad para todos, explicada de forma clara.</h1>
+  <p>Este espacio reúne información educativa sobre ciberseguridad, amenazas digitales, prevención y buenas prácticas. El contenido está organizado para que estudiantes, docentes, usuarios particulares y organizaciones encuentren información relacionada con sus necesidades.</p>
+  <a class="btn" href="CiberPredict_funcional.html">🔎 Ir a CiberPredict</a>
+  <a class="btn secondary" href="#usuarios">👥 Ver información por usuario</a>
+ </div>
+ <div class="hero-art">
+ <svg viewBox="0 0 560 410" xmlns="http://www.w3.org/2000/svg" aria-label="Ilustración de seguridad digital">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#19baff"/><stop offset="1" stop-color="#68e9ff"/></linearGradient></defs>
+  <rect width="560" height="410" rx="18" fill="#071827"/>
+  <circle cx="280" cy="190" r="130" fill="#0a3046" stroke="#164b68"/>
+  <path d="M280 80 L385 120 V205 C385 278 333 326 280 345 C227 326 175 278 175 205 V120Z" fill="#0a263a" stroke="url(#g)" stroke-width="6"/>
+  <rect x="230" y="175" width="100" height="82" rx="12" fill="#0b1b2b" stroke="#68e9ff" stroke-width="4"/>
+  <path d="M250 175v-23c0-40 60-40 60 0v23" fill="none" stroke="#68e9ff" stroke-width="10"/>
+  <circle cx="280" cy="215" r="10" fill="#19baff"/>
+  <path d="M280 225v17" stroke="#19baff" stroke-width="6"/>
+  <path d="M75 300h100M385 300h100M95 330h65M400 330h65" stroke="#1a526f" stroke-width="4" stroke-linecap="round"/>
+  <text x="280" y="54" fill="#eaf8ff" text-anchor="middle" font-family="Arial" font-size="22" font-weight="700">PROTECCIÓN DIGITAL</text>
+ </svg>
+ <div class="caption">Ilustración conceptual: protección de información y dispositivos.</div>
+ </div>
+</header>
+
+<main class="container">
+
+<section id="que-es">
+ <h2>¿Qué es la ciberseguridad?</h2>
+ <p class="lead">La ciberseguridad es esencial para proteger las actividades, dispositivos y datos que utilizamos diariamente en Internet. Su objetivo es reducir los riesgos para personas, empresas e instituciones mediante herramientas como contraseñas seguras, autenticación multifactor, cifrado, copias de seguridad, actualizaciones y sistemas de detección de amenazas.
+
+Además de la tecnología, los hábitos de los usuarios son fundamentales, ya que acciones como abrir enlaces desconocidos, reutilizar contraseñas o descargar aplicaciones de fuentes no confiables pueden aumentar los riesgos. Por ello, la ciberseguridad combina tecnología, educación y buenas prácticas para proteger tanto los sistemas como la información y las personas que los utilizan.</p>
+ <div class="grid">
+  <article class="card"><div class="icon">🔐</div><h3>Confidencialidad</h3><p>La confidencialidad busca impedir que personas no autorizadas puedan acceder a información privada. Puede aplicarse a documentos personales, fotografías, contraseñas, información académica, datos empresariales y otros tipos de información.
+Algunas medidas relacionadas con la confidencialidad son el uso de contraseñas, autenticación multifactor, cifrado y controles de permisos.</p></article>
+  <article class="card"><div class="icon">🧩</div><h3>Integridad</h3><p>La integridad significa mantener la información correcta, completa y protegida frente a modificaciones no autorizadas. Es especialmente importante cuando los datos se utilizan para tomar decisiones o realizar procesos importantes.
+Los controles de acceso, registros de actividad, copias de seguridad y mecanismos de validación pueden ayudar a detectar o prevenir modificaciones indebidas.</p></article>
+  <article class="card"><div class="icon">⚡</div><h3>Disponibilidad</h3><p>La disponibilidad busca que los sistemas y datos puedan utilizarse cuando los usuarios autorizados los necesiten. Un servicio puede dejar de estar disponible debido a fallos técnicos, errores humanos, problemas de infraestructura o incidentes de seguridad.
+Las copias de seguridad, sistemas redundantes, mantenimiento y planes de recuperación ayudan a reducir el impacto de estas situaciones.</p></article>
+ </div>
+ <p>Estos tres principios suelen relacionarse con la llamada <strong>triada CIA</strong>: confidencialidad, integridad y disponibilidad. Una estrategia de seguridad efectiva considera los tres, además de otros aspectos como autenticación, control de acceso, privacidad, recuperación y gestión de incidentes.</p>
+</section>
+
+<section id="amenazas">
+ <h2>Principales peligros digitales</h2>
+ <p class="lead">Las amenazas digitales cambian constantemente y pueden afectar a personas, empresas e instituciones. Algunas utilizan el engaño, mientras que otras aprovechan vulnerabilidades de programas, dispositivos o redes. Conocer estos riesgos ayuda a identificar señales de alerta y tomar decisiones más seguras. Por ello, la ciberseguridad requiere prevención, actualización, supervisión y capacidad de respuesta continua. A continuación, se presentan algunas de las amenazas digitales más comunes y sus principales características.</p>
+ <div class="grid">
+  <article class="card"><div class="icon">🎣</div><h3>Phishing</h3><p>Mensajes que intentan hacerse pasar por una persona, empresa o servicio legítimo para inducir al usuario a entregar información o realizar una acción.</p><p><strong>Señales:</strong> urgencia inesperada, enlaces dudosos, solicitudes de credenciales o remitentes que no coinciden.</p></article>
+  <article class="card"><div class="icon">🦠</div><h3>Malware</h3><p>Software diseñado para realizar acciones no autorizadas o perjudiciales. Puede presentarse en distintas formas y llegar mediante archivos, aplicaciones o sitios comprometidos.</p></article>
+  <article class="card"><div class="icon">🔑</div><h3>Robo de credenciales</h3><p>Obtención no autorizada de nombres de usuario, contraseñas, códigos u otros datos utilizados para acceder a cuentas.</p></article>
+  <article class="card"><div class="icon">🌐</div><h3>Riesgos de red</h3><p>Una conexión de red insegura puede exponer comunicaciones o facilitar determinados ataques, especialmente cuando el usuario realiza actividades sensibles.</p></article>
+  <article class="card"><div class="icon">📱</div><h3>Aplicaciones sospechosas</h3><p>Aplicaciones provenientes de fuentes no confiables pueden representar riesgos de privacidad, seguridad o integridad del dispositivo.</p></article>
+  <article class="card"><div class="icon">💾</div><h3>Pérdida de información</h3><p>Los datos pueden perderse por errores, fallos técnicos, incidentes de seguridad o eliminación accidental. Las copias de seguridad ayudan a recuperar información importante.</p></article>
+ </div>
+</section>
+
+<section id="usuarios">
+ <h2>Peligros según el tipo de usuario</h2>
+ <p class="lead">Las necesidades de seguridad cambian según las actividades, información y sistemas que utiliza cada persona u organización.</p>
+ <table class="table">
+ <tr><th>Usuario</th><th>Riesgos frecuentes</th><th>Medidas recomendadas</th></tr>
+ <tr><td>🎓 Estudiante</td><td>Phishing, robo de cuentas, contraseñas reutilizadas, enlaces maliciosos y redes públicas.</td><td>MFA, contraseñas únicas, verificar mensajes y mantener dispositivos actualizados.</td></tr>
+ <tr><td>👨‍🏫 Docente</td><td>Suplantación, archivos maliciosos, correos fraudulentos y exposición de información institucional.</td><td>Verificar solicitudes, proteger archivos compartidos, controlar permisos y usar MFA.</td></tr>
+ <tr><td>📱 Usuario particular</td><td>Estafas, aplicaciones sospechosas, robo de credenciales y pérdida de información personal.</td><td>Descargar desde fuentes confiables, revisar permisos, usar MFA y hacer copias de seguridad.</td></tr>
+ <tr><td>🏢 Empresa</td><td>Malware, accesos no autorizados, fuga de información, vulnerabilidades y errores humanos.</td><td>Control de acceso, actualizaciones, copias, capacitación, monitoreo y planes de respuesta.</td></tr>
+ <tr><td>⚙️ Administrador</td><td>Abuso de privilegios, configuraciones incorrectas, cuentas comprometidas y falta de monitoreo.</td><td>Principio de mínimo privilegio, registros, revisión de accesos, segmentación y procedimientos de respuesta.</td></tr>
+ </table>
+</section>
+
+<section>
+ <h2>🧠 Ciberseguridad predictiva</h2>
+ <p>La ciberseguridad predictiva busca utilizar información y análisis para identificar señales o patrones relacionados con posibles riesgos futuros. Para ello, puede analizar registros de actividad, accesos, conexiones de red, alertas de seguridad, comportamiento de los usuarios y otros eventos registrados por los sistemas.
+
+A diferencia de un enfoque basado únicamente en reaccionar ante un ataque, la ciberseguridad predictiva intenta detectar señales tempranas que permitan tomar medidas preventivas. Por ejemplo, un cambio repentino en los patrones de acceso o una actividad inusual puede generar una alerta para realizar una revisión.
+
+El aprendizaje automático también puede utilizarse para analizar grandes cantidades de datos y reconocer comportamientos que se alejan de los patrones habituales. Sin embargo, sus resultados no son completamente infalibles y pueden existir falsos positivos o negativos.
+
+Por esta razón, las predicciones deben considerarse como señales de apoyo y no como conclusiones definitivas. La supervisión humana, la actualización constante y el uso responsable de los datos son elementos importantes para mantener una protección adecuada.
+
+En conjunto, la ciberseguridad predictiva combina tecnología, análisis de datos y supervisión humana para identificar posibles riesgos con anticipación y facilitar una respuesta más rápida ante las amenazas digitales.</p>
+ <div class="greenbox"><strong>Importante:</strong> “predictiva” no significa que un sistema pueda saber con certeza qué ataque ocurrirá. Las predicciones dependen de la calidad de los datos, el modelo utilizado, el contexto y otros factores. Los resultados deben interpretarse como apoyo para la gestión del riesgo.</div>
+ <div class="timeline">
+  <div class="step"><b>1. Recopilación</b><span>Se reúnen datos relevantes de eventos, dispositivos, usuarios o sistemas.</span></div>
+  <div class="step"><b>2. Preparación</b><span>Los datos se organizan y revisan para reducir errores y obtener información útil.</span></div>
+  <div class="step"><b>3. Análisis</b><span>Se buscan patrones, tendencias y comportamientos que se aparten de lo esperado.</span></div>
+  <div class="step"><b>4. Evaluación</b><span>Se estima el nivel de riesgo mediante reglas, indicadores o modelos.</span></div>
+  <div class="step"><b>5. Alerta y prevención</b><span>El sistema puede generar una alerta o recomendación para apoyar una decisión de seguridad.</span></div>
+ </div>
+</section>
+
+<div class="image">
+<svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+ <defs><linearGradient id="line" x1="0" x2="1"><stop stop-color="#19baff"/><stop offset="1" stop-color="#40d995"/></linearGradient></defs>
+ <rect width="1200" height="400" fill="#081a29"/>
+ <g stroke="#16394f" stroke-width="1"><path d="M70 330H1130M70 260H1130M70 190H1130M70 120H1130"/><path d="M180 60v270M390 60v270M600 60v270M810 60v270M1020 60v270"/></g>
+ <polyline points="70,300 180,270 290,280 390,210 500,230 600,155 710,175 810,110 920,145 1020,80 1130,105" fill="none" stroke="url(#line)" stroke-width="7"/>
+ <g fill="#68e9ff"><circle cx="180" cy="270" r="6"/><circle cx="390" cy="210" r="6"/><circle cx="600" cy="155" r="6"/><circle cx="810" cy="110" r="6"/><circle cx="1020" cy="80" r="6"/></g>
+ <text x="70" y="48" fill="#eaf8ff" font-size="25" font-family="Arial" font-weight="700">Evolución del nivel de seguridad</text>
+ <text x="70" y="375" fill="#8da8bc" font-size="14" font-family="Arial">Ejemplo conceptual de cómo un sistema puede visualizar tendencias de riesgo.</text>
+</svg>
+<div class="caption">Gráfica ilustrativa; no representa datos reales de una organización.</div>
+</div>
+
+<section id="prevencion">
+ <h2>Buenas prácticas de prevención</h2>
+ <div class="grid">
+  <article class="card"><h3>🔐 Protege tus cuentas</h3><p>Usa contraseñas únicas y activa autenticación multifactor cuando esté disponible. Evita compartir códigos de acceso.</p></article>
+  <article class="card"><h3>🔄 Actualiza tus sistemas</h3><p>Mantén actualizados el sistema operativo, navegador y aplicaciones. Obtén las actualizaciones desde fuentes oficiales.</p></article>
+  <article class="card"><h3>📧 Piensa antes de hacer clic</h3><p>Revisa remitentes, dominios, enlaces y solicitudes inesperadas. Ante una duda, verifica por un canal oficial.</p></article>
+  <article class="card"><h3>💾 Haz copias de seguridad</h3><p>Conserva copias de información importante y comprueba periódicamente que puedas recuperarla.</p></article>
+  <article class="card"><h3>👥 Controla los permisos</h3><p>Comparte información solamente con las personas que necesitan acceder a ella y revisa permisos periódicamente.</p></article>
+  <article class="card"><h3>🚨 Reporta incidentes</h3><p>Si detectas una situación sospechosa, informa a la persona o área responsable de seguridad siguiendo los procedimientos establecidos.</p></article>
+ </div>
+</section>
+
+<section>
+ <h2>¿Qué hacer ante una situación sospechosa?</h2>
+ <div class="warning"><strong>1. Detente.</strong> No respondas ni entregues información inmediatamente.</div>
+ <div class="warning"><strong>2. Verifica.</strong> Comprueba la identidad del remitente o servicio utilizando un canal oficial.</div>
+ <div class="warning"><strong>3. Protege.</strong> Si existe riesgo para una cuenta, cambia las credenciales desde el sitio oficial y revisa los métodos de acceso.</div>
+ <div class="warning"><strong>4. Informa.</strong> Comunica el incidente al responsable correspondiente para que pueda evaluarse.</div>
+ <div class="warning"><strong>5. Aprende.</strong> Identifica qué señal permitió detectar el problema y qué medida puede evitar situaciones similares.</div>
+</section>
+
+<section id="ia">
+ <h2>Inteligencia artificial y aprendizaje automático</h2>
+ <p>La inteligencia artificial (IA) y el aprendizaje automático (Machine Learning) están adquiriendo un papel importante en el desarrollo de soluciones de ciberseguridad. Estas tecnologías permiten analizar grandes cantidades de información procedente de redes, dispositivos, aplicaciones y sistemas, con el objetivo de identificar patrones que podrían estar relacionados con comportamientos inusuales o posibles amenazas.
+
+En un sistema de ciberseguridad predictiva, los modelos de aprendizaje automático pueden utilizar información histórica para reconocer comportamientos considerados normales y compararlos con nuevas actividades. Cuando se detecta una diferencia significativa, el sistema puede generar una alerta para que posteriormente sea revisada. De esta manera, la tecnología puede contribuir a detectar situaciones que podrían pasar desapercibidas mediante una supervisión exclusivamente manual.
+
+Una de sus principales ventajas es la capacidad de procesar grandes volúmenes de datos en poco tiempo. Esto puede ser especialmente útil en empresas e instituciones que cuentan con numerosos dispositivos, usuarios y conexiones. La IA puede ayudar a organizar la información, detectar relaciones entre diferentes eventos y establecer prioridades para que los responsables de seguridad puedan investigar primero las situaciones que requieren mayor atención.</p>
+ <p>Sin embargo, estas tecnologías también presentan limitaciones. Un sistema puede generar falsos positivos, cuando identifica como sospechosa una actividad que en realidad es legítima, o falsos negativos, cuando no detecta una actividad que sí representa un riesgo. Estos errores pueden producir alertas innecesarias o permitir que determinadas amenazas pasen desapercibidas.
+
+Además, la calidad de los resultados depende de factores como los datos utilizados para entrenar el modelo, la configuración del sistema y las características del entorno donde se implementa. Los comportamientos digitales pueden cambiar con el tiempo, por lo que un modelo que funciona correctamente en determinadas circunstancias puede necesitar ajustes y actualizaciones posteriormente.
+
+Por esta razón, la inteligencia artificial no debe considerarse un reemplazo completo de los profesionales de seguridad. Sus resultados deben analizarse dentro de un contexto y, cuando sea necesario, ser revisados por personas capacitadas. La combinación de análisis automatizado, supervisión humana, actualización constante y buenas prácticas permite construir sistemas de seguridad más completos.
+
+En el contexto de la ciberseguridad predictiva, la IA puede utilizarse como una herramienta de apoyo para anticipar posibles riesgos, identificar comportamientos anómalos y facilitar una respuesta más rápida. Su finalidad no es garantizar que todas las amenazas puedan predecirse, sino proporcionar información que ayude a detectar señales tempranas y tomar decisiones de seguridad de manera más informada.</p>
+ <div class="redbox"><strong>Privacidad:</strong> nunca se deben introducir contraseñas, códigos de autenticación, datos bancarios u otra información altamente sensible en formularios educativos o demostraciones que no estén diseñados específicamente para proteger esos datos.</div>
+</section>
+
+<section id="recursos">
+ <h2>Recursos y glosario básico</h2>
+ <div class="grid">
+  <article class="card"><h3>Autenticación</h3><p>Proceso mediante el cual se comprueba la identidad de un usuario o sistema.</p></article>
+  <article class="card"><h3>Vulnerabilidad</h3><p>Debilidad que puede ser aprovechada para afectar la seguridad de un sistema.</p></article>
+  <article class="card"><h3>Amenaza</h3><p>Situación, actor o evento que puede causar un impacto negativo sobre un activo.</p></article>
+  <article class="card"><h3>Riesgo</h3><p>Posibilidad de que una amenaza aproveche una condición y produzca consecuencias.</p></article>
+  <article class="card"><h3>Incidente</h3><p>Evento que afecta o puede afectar la confidencialidad, integridad o disponibilidad de información o sistemas.</p></article>
+  <article class="card"><h3>Firewall</h3><p>Mecanismo que ayuda a controlar determinados flujos de tráfico de red según reglas configuradas.</p></article>
+ </div>
+</section>
+
+<section>
+ <div class="card" style="text-align:center;padding:32px">
+  <span class="badge">PLATAFORMA CIBERPREDICT</span>
+  <h2 style="margin-top:12px">¿Quieres poner en práctica lo aprendido?</h2>
+  <p class="lead" style="margin:0 auto">CiberPredict es el prototipo interactivo del proyecto. Permite realizar una evaluación orientativa de seguridad, consultar resultados, generar recomendaciones, revisar alertas y explorar un simulador educativo de amenazas.</p>
+  <a class="btn" href="CiberPredict_funcional.html">🛡️ Abrir CiberPredict</a>
+  <p style="font-size:11px;color:var(--muted);margin-top:14px">Enlace al prototipo funcional incluido junto con esta página.</p>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ CiberPredict · Centro de Información de Ciberseguridad · Contenido educativo.<br>
+ Los ejemplos de riesgos, puntuaciones y gráficas son ilustrativos y no constituyen una evaluación profesional de seguridad.
+</footer>
+
+</body>
+</html>
